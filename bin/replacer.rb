@@ -1,7 +1,12 @@
+#!/usr/bin/env ruby
+
 require 'docx'
 
-$sourceFileName = 'input.docx';
-$destinationFileName = 'result.docx';
+puts __dir__
+dataDir = File.join(__dir__, '../', 'data/')
+puts dataDir
+$sourceFileName = "#{dataDir}input.docx";
+$destinationFileName = "#{dataDir}result.docx";
 puts "Please enter values for replacement with spaces (current -> new):"
 ReplaceValues = {}
 input = gets.chomp
@@ -12,7 +17,6 @@ names.each_with_index do |name, index|
   if index % 2 == 0
     ReplaceValues[name.upcase.to_sym] = ""
   else 
-    puts ReplaceValues.keys.last
     ReplaceValues[ReplaceValues.keys.last] = name.upcase
   end
 end
