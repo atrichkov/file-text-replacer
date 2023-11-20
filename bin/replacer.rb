@@ -2,12 +2,10 @@
 
 require 'docx'
 
-puts __dir__
-dataDir = File.join(__dir__, '../', 'data/')
-puts dataDir
-$sourceFileName = "#{dataDir}input.docx";
-$destinationFileName = "#{dataDir}result.docx";
-puts "Please enter values for replacement with spaces (current -> new):"
+DATADIR = File.join(__dir__, '../', 'data/')
+$sourceFileName = "#{DATADIR}input.docx";
+$destinationFileName = "#{DATADIR}result.docx";
+puts "Please enter values for replacement separated by spaces (current -> new):"
 ReplaceValues = {}
 input = gets.chomp
 names = input.split
@@ -21,7 +19,7 @@ names.each_with_index do |name, index|
   end
 end
 
-puts "Check key/value paris for replacement and press enter to continue"
+puts "Check current/new paris for replacement and press enter to continue"
 puts ReplaceValues
 gets.chomp # wait for confirmation
 
@@ -48,7 +46,6 @@ def processDocument(replaceValues)
 
   doc.save($destinationFileName)
   puts "New file #{$destinationFileName} is generated"
-  puts 
 end
 
 processDocument(ReplaceValues)
