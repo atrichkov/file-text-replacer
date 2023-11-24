@@ -3,23 +3,32 @@
 require 'docx'
 
 DATADIR = File.join(__dir__, '../', 'data/')
-$sourceFileName = "#{DATADIR}input.docx";
-$destinationFileName = "#{DATADIR}result.docx";
-puts "Please enter values for replacement separated by spaces (current -> new):"
+
+puts 'Enter source file name (if you press enter to skip input.docx would be used)'
+sourceFile = gets.chomp
+
+if sourceFile == ""
+  sourceFile = 'input.docx'
+end
+
+$sourceFileName = "#{DATADIR}#{sourceFile}"
+puts $sourceFileName
+$destinationFileName = "#{DATADIR}result.docx"
+puts "Please enter values for replacement separated by comma (current -> new):"
 ReplaceValues = {}
 input = gets.chomp
-names = input.split
+names = input.split(',')
 
 names.each_with_index do |name, index|
-  next if name == 'done'
+  name = name.upcase.strip
   if index % 2 == 0
-    ReplaceValues[name.upcase.to_sym] = ""
+    ReplaceValues[name.to_sym] = ""
   else 
-    ReplaceValues[ReplaceValues.keys.last] = name.upcase
+    ReplaceValues[ReplaceValues.keys.last] = name
   end
 end
 
-puts "Check current/new paris for replacement and press enter to continue"
+puts "Check current/new pairs for replacement and press enter to continue"
 puts ReplaceValues
 gets.chomp # wait for confirmation
 
