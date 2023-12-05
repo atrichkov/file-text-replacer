@@ -51,9 +51,9 @@ class Replacer
         row.cells.each do |cell|
           cell.paragraphs.each do |paragraph|
             paragraph.each_text_run do |text|
-              paragraphText = paragraph.text.strip
-              if cell_counter == 1 and replace_values.include? paragraphText.to_sym
-                text.substitute(text.to_s, replace_values[paragraphText.to_sym])
+              cell_text_symbol = text.to_s.strip.to_sym
+              if cell_counter == 1 and replace_values.include? cell_text_symbol
+                text.substitute(text.to_s, replace_values[cell_text_symbol])
               end
             end
           end
