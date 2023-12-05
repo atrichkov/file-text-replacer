@@ -1,0 +1,21 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    docx (0.8.0)
+      nokogiri (~> 1.13, >= 1.13.0)
+      rubyzip (~> 2.0)
+    mini_portile2 (2.8.5)
+    nokogiri (1.15.5)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
+    racc (1.7.3)
+    rubyzip (2.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  docx (~> 0.8.0)
+
+BUNDLED WITH
+   2.1.2
